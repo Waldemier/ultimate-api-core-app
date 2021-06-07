@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "OLNYT2REkfnKvSIGUHkUkpcrnyHVFShRaEFe/Vcv4zxIRCtXitOgEKgAQqgmAKWkLajW9FLcy8HPvVNa0KDq6g==",
+  "success": true,
+  "projectFilePath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj",
+  "expectedPackageFiles": [
+    "/Users/user/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.0/microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.logging/5.0.0/microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/nlog/4.7.9/nlog.4.7.9.nupkg.sha512",
+    "/Users/user/.nuget/packages/nlog.extensions.logging/1.7.2/nlog.extensions.logging.1.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

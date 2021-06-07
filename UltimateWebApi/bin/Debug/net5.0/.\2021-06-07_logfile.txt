@@ -1,0 +1,4 @@
+2021-06-07 06:53:08.3324 INFO LogInfo message
+2021-06-07 06:53:08.3349 WARN LogWarn message
+2021-06-07 06:53:08.3361 ERROR LogError message
+2021-06-07 06:53:08.3367 DEBUG LogDebug message

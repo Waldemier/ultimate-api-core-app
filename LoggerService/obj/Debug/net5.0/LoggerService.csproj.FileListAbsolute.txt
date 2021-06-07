@@ -1,0 +1,15 @@
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/LoggerService.deps.json
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/LoggerService.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/ref/LoggerService.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/LoggerService.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/Contracts.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/Contracts.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.csprojAssemblyReference.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.AssemblyInfoInputs.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.AssemblyInfo.cs
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.csproj.CoreCompileInputs.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.csproj.CopyComplete
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/ref/LoggerService.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.pdb

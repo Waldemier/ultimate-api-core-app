@@ -1,0 +1,12 @@
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/Contracts.deps.json
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/Contracts.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/ref/Contracts.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/Contracts.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.csprojAssemblyReference.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.AssemblyInfoInputs.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.AssemblyInfo.cs
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.csproj.CoreCompileInputs.cache
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/ref/Contracts.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.pdb
