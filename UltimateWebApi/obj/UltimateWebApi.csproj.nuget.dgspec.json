@@ -17,7 +17,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/user/.nuget/NuGet/NuGet.Config"
+          "/Users/user/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -59,6 +59,67 @@
         }
       }
     },
+    "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj",
+        "projectName": "Entities",
+        "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj",
+        "packagesPath": "/Users/user/.nuget/packages/",
+        "outputPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/user/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -72,7 +133,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/user/.nuget/NuGet/NuGet.Config"
+          "/Users/user/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -124,20 +185,20 @@
         }
       }
     },
-    "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj": {
+    "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
-        "projectName": "UltimateWebApi",
-        "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
+        "projectUniqueName": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/Repository.csproj",
         "packagesPath": "/Users/user/.nuget/packages/",
-        "outputPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/obj/",
+        "outputPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/user/.nuget/NuGet/NuGet.Config"
+          "/Users/user/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -149,8 +210,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj": {
-                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj"
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/Contracts.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/Contracts.csproj"
+              },
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj"
               }
             }
           }
@@ -165,6 +229,87 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
+        "projectName": "UltimateWebApi",
+        "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
+        "packagesPath": "/Users/user/.nuget/packages/",
+        "outputPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/user/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj"
+              },
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj"
+              },
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/Repository.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Repository/Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
