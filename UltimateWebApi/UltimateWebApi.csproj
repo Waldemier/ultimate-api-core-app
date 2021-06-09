@@ -11,13 +11,11 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
-      <ProjectReference Include="..\Entities\Entities.csproj">
-        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-      </ProjectReference>
       <ProjectReference Include="..\Repository\Repository.csproj">
         <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
       </ProjectReference>

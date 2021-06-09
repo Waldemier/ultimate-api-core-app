@@ -7,6 +7,10 @@ namespace Entities.Configuration
 {
     public class CompanyConfiguration: IEntityTypeConfiguration<Company>
     {
+        /// <summary>
+        /// Company data seeding
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<Company> builder)
         {
             builder.HasData(

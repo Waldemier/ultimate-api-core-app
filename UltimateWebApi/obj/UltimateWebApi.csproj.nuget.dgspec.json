@@ -28,7 +28,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj": {
+                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -96,6 +100,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Json.Net": {
+              "target": "Package",
+              "version": "[1.0.33, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.6, )"
@@ -278,9 +286,6 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj": {
-                "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Entities/Entities.csproj"
-              },
               "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj": {
                 "projectPath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj"
               },
@@ -300,6 +305,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.6, )"

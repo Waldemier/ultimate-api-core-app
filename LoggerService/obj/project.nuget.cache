@@ -1,18 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "OLNYT2REkfnKvSIGUHkUkpcrnyHVFShRaEFe/Vcv4zxIRCtXitOgEKgAQqgmAKWkLajW9FLcy8HPvVNa0KDq6g==",
+  "dgSpecHash": "F1i4GE0paNCctyDs6dq1m8/KSMB+vGj299N5F4/VzJ6v+EF0clQ1yiC6KmqXfqVU9x9B2YXJepLTimCUBd6qQA==",
   "success": true,
   "projectFilePath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/LoggerService.csproj",
   "expectedPackageFiles": [
+    "/Users/user/.nuget/packages/json.net/1.0.33/json.net.1.0.33.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.entityframeworkcore/5.0.6/microsoft.entityframeworkcore.5.0.6.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.entityframeworkcore.abstractions/5.0.6/microsoft.entityframeworkcore.abstractions.5.0.6.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.entityframeworkcore.analyzers/5.0.6/microsoft.entityframeworkcore.analyzers.5.0.6.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.caching.abstractions/5.0.0/microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.caching.memory/5.0.0/microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
-    "/Users/user/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.0/microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.1/microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.logging/5.0.0/microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/nlog/4.7.9/nlog.4.7.9.nupkg.sha512",
-    "/Users/user/.nuget/packages/nlog.extensions.logging/1.7.2/nlog.extensions.logging.1.7.2.nupkg.sha512"
+    "/Users/user/.nuget/packages/nlog.extensions.logging/1.7.2/nlog.extensions.logging.1.7.2.nupkg.sha512",
+    "/Users/user/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "/Users/user/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

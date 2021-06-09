@@ -13,3 +13,5 @@
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/ref/LoggerService.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/obj/Debug/net5.0/LoggerService.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/Entities.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/LoggerService/bin/Debug/net5.0/Entities.pdb

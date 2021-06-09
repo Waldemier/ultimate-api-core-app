@@ -7,4 +7,7 @@
     <ItemGroup>
       <Folder Include="SpecificRepositoryInterfaces\" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Entities\Entities.csproj" />
+    </ItemGroup>
 </Project>

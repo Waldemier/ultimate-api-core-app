@@ -10,3 +10,6 @@
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/ref/Contracts.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/Entities.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/bin/Debug/net5.0/Entities.pdb
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/Contracts/obj/Debug/net5.0/Contracts.csproj.CopyComplete

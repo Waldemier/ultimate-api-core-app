@@ -27,7 +27,7 @@ namespace Repository
             this._repositoryContext.Set<T>();
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
-            !trackChanges ? this._repositoryContext.Set<T>().Where(expression).AsNoTracking() // returns for readonly
+            !trackChanges ? this._repositoryContext.Set<T>().Where(expression).AsNoTracking() // returns for readonly || Set<T> get the specify table
                 :
             this._repositoryContext.Set<T>().Where(expression);
     }
