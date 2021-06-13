@@ -20,5 +20,13 @@ namespace Repository.SpecificRepositories
         public Employee GetEmployee(Guid companyId, Guid Id, bool trackChanges) =>
             FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(Id), trackChanges: false)
             .SingleOrDefault();
+
+        public void CreateEmployeeForCompany(Guid companyId, Employee employee)
+        {
+            employee.CompanyId = companyId;
+            Create(employee);
+        }
+
+        public void DeleteEmployee(Employee employee) => Delete(employee);
     }
 }

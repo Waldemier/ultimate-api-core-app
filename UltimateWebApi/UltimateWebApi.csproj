@@ -23,6 +23,8 @@
 
     <ItemGroup>
       <Folder Include="internal_logs" />
+      <Folder Include="Csv\" />
+      <Folder Include="ModelBinders\" />
     </ItemGroup>
 
 </Project>

@@ -22,5 +22,13 @@ namespace Repository.SpecificRepositories
         public Company GetCompany(Guid Id, bool trackChanges) =>
             FindByCondition(c => c.Id.Equals(Id), trackChanges)
             .SingleOrDefault();
+
+        public void CreateCompany(Company company) => Create(company);
+
+        public IEnumerable<Company> GetByIds(IEnumerable<Guid> Ids, bool trachChanges) =>
+            FindByCondition(x => Ids.Contains(x.Id), trachChanges)
+            .ToList();
+
+        public void DeleteCompany(Company company) => Delete(company);
     }
 }

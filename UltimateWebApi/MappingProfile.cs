@@ -14,6 +14,10 @@ namespace UltimateWebApi
                     opt => opt.MapFrom(c => string.Join(' ', c.Address, c.Country)));
 
             CreateMap<Employee, EmployeeDto>();
+
+            CreateMap<CompanyForCreateDto, Company>();
+
+            CreateMap<EmployeeForCreateDto, Employee>();
         }
     }
 }
