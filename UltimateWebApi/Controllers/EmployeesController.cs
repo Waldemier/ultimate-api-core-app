@@ -74,6 +74,12 @@ namespace UltimateWebApi.Controllers
                 return BadRequest("EmployeeForCreateDto object is null");
             }
 
+            if (!ModelState.IsValid)
+            {
+                this._logger.LogError("Invalid model state for the EmployeeForCreateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
             var company = this._repositoryManager.Company.GetCompany(companyId, trackChanges: false);
             if(company == null)
             {
@@ -91,7 +97,7 @@ namespace UltimateWebApi.Controllers
         }
 
         [HttpPut("{Id:Guid}")]
-        public IActionResult UpdateEmpoyerForCompany(Guid companyId, Guid Id,
+        public IActionResult UpdateEmployeeForCompany(Guid companyId, Guid Id,
             [FromBody] EmployeeForUpdateDto employeeUpdateDto)
         {
             if(employeeUpdateDto == null)
@@ -99,7 +105,13 @@ namespace UltimateWebApi.Controllers
                 this._logger.LogError("EmployeeForUpdateDto object sent from client is null.");
                 return BadRequest("EmployeeForUpdateDto object is null.");
             }
-
+            
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the EmployeeForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+            
             var company = this._repositoryManager.Company.GetCompany(companyId, trackChanges: false);
 
             if(company == null)
@@ -175,8 +187,26 @@ namespace UltimateWebApi.Controllers
             }
 
             var employeeUpdateDto = this._mapper.Map<EmployeeForUpdateDto>(employeeEntity);
-            patchDoc.ApplyTo(employeeUpdateDto); // The type of json patch document must be the same as type of object who appliend
+            // For validating we need to provide a second parameter as ModelState.
+            patchDoc.ApplyTo(employeeUpdateDto, ModelState); // The type of json patch document must be the same as type of object who applied
 
+            TryValidateModel(employeeUpdateDto); // Implemented for checking if the any property did not be removed. Because check in below validation applies only for patchDoc (request operations by patch)
+            
+            // patch validation located in this place, because manipulation with model is provided above
+            if(!ModelState.IsValid)
+            {
+                /*What we get*/
+                /*
+                    {
+                        "EmployeeForUpdateDto": [
+                            "The target location specified by path segment 'agee' was not found."
+                        ]
+                    }
+                */
+                this._logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+            
             this._mapper.Map(employeeUpdateDto, employeeEntity); // from update dto to entity
             this._repositoryManager.SaveChanges();
 

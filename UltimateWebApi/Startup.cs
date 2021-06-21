@@ -3,6 +3,7 @@ using Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,6 +35,13 @@ namespace UltimateWebApi
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.Configure<ApiBehaviorOptions>(options => {
+            /*
+             * suppress model filter and allows to use ModelState in our controllers 
+             */
+                options.SuppressModelStateInvalidFilter = true;
+            });
+            
             services.AddControllers(configure =>
             {
                 configure.RespectBrowserAcceptHeader = true;

@@ -1,10 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Entities.DataTransferObjects
 {
-    public class EmployeeForCreateDto
+    public class EmployeeForCreateDto: EmployeeForManipulationDto
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Position { get; set; }
+        
     }
 }
