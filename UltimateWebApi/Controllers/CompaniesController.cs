@@ -149,6 +149,29 @@ namespace UltimateWebApi.Controllers
             return CreatedAtRoute("CompanyById", new { Id = companyDtoToView.Id }, companyDtoToView);
         }
 
+        [HttpPut("{Id:Guid}")] // Fully update a resourse
+        public IActionResult UpdateCompany(Guid Id, [FromBody] CompanyForUpdateDto companyUpdateDto)
+        {
+            if(companyUpdateDto == null)
+            {
+                this._logger.LogError("CompanyForUpdateDto object sent from client is null.");
+                return BadRequest("CompanyForUpdateDto object is null");
+            }
+
+            var companyEntity = this._repositoryManager.Company.GetCompany(Id, trackChanges: true);
+
+            if(companyEntity == null)
+            {
+                this._logger.LogInfo($"Company with {Id} Id does not exist.");
+                return NotFound();
+            }
+
+            this._mapper.Map(companyUpdateDto, companyEntity);
+            this._repositoryManager.SaveChanges();
+
+            return NoContent();
+        }
+
         [HttpDelete("{Id:Guid}")]
         public IActionResult DeleteCompany(Guid Id)
         {

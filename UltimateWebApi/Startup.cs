@@ -38,7 +38,8 @@ namespace UltimateWebApi
             {
                 configure.RespectBrowserAcceptHeader = true;
                 configure.ReturnHttpNotAcceptable = true; // allows us to get 406 Not Acceptable status if the server does not support media type of request.
-            }).AddXmlDataContractSerializerFormatters()
+            }).AddNewtonsoftJson()
+              .AddXmlDataContractSerializerFormatters()
               .AddCustomCSVFormatter();
             
             services.AddSwaggerGen(c =>

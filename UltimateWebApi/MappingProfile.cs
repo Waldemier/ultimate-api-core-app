@@ -18,6 +18,10 @@ namespace UltimateWebApi
             CreateMap<CompanyForCreateDto, Company>();
 
             CreateMap<EmployeeForCreateDto, Employee>();
+
+            CreateMap<EmployeeForUpdateDto, Employee>().ReverseMap();
+
+            CreateMap<CompanyForUpdateDto, Company>();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Repository.SpecificRepositories
             .ToList();
 
         public Employee GetEmployee(Guid companyId, Guid Id, bool trackChanges) =>
-            FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(Id), trackChanges: false)
+            FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(Id), trackChanges)
             .SingleOrDefault();
 
         public void CreateEmployeeForCompany(Guid companyId, Employee employee)
