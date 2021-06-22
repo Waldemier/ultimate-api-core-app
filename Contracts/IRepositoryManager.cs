@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Contracts.SpecificRepositoryInterfaces;
 
 namespace Contracts
@@ -7,6 +8,6 @@ namespace Contracts
     {
         ICompanyRepository Company { get; }
         IEmployeeRepository Employee { get; }
-        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

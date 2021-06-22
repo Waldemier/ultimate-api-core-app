@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Contracts;
 using Contracts.SpecificRepositoryInterfaces;
 using Entities;
@@ -26,6 +27,6 @@ namespace Repository
             get => this._employeeRepository ?? new EmployeeRepository(this._repositoryContext);
         }
 
-        public void SaveChanges() => this._repositoryContext.SaveChanges();
+        public Task SaveChangesAsync() => this._repositoryContext.SaveChangesAsync();
     }
 }

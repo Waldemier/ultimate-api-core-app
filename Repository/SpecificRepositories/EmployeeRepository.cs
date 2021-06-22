@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Contracts.SpecificRepositoryInterfaces;
 using Entities;
 using Entities.Models;
+using Entities.RequestFeatures;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository.SpecificRepositories
 {
@@ -13,10 +16,18 @@ namespace Repository.SpecificRepositories
         {
         }
 
-        public IEnumerable<Employee> GetEmployees(Guid companyId, bool trackChanges) =>
-            FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
-            .ToList();
-
+        public async Task<PagedList<Employee>> GetEmployeesAsync(Guid companyId, EmployeeParameters employeeParameters,
+            bool trackChanges)
+        {
+            var employees = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+                .OrderBy(e => e.Name) // sorting by name
+                //.Skip((employeeParameters.PageNumber - 1) * employeeParameters.PageSize) // 2-1 * 2 = 2 - skip, take 2 next (because page size = 2 for example)
+                //.Take(employeeParameters.PageSize)  
+                .ToListAsync();
+            return PagedList<Employee>.ToPagedList(employees, employeeParameters.PageNumber,
+                employeeParameters.PageSize);
+        }
+            
         public Employee GetEmployee(Guid companyId, Guid Id, bool trackChanges) =>
             FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(Id), trackChanges)
             .SingleOrDefault();

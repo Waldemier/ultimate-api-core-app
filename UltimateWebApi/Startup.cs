@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
+using UltimateWebApi.ActionFilters;
 using UltimateWebApi.Extensions;
 
 namespace UltimateWebApi
@@ -34,13 +35,17 @@ namespace UltimateWebApi
             services.ConfigureRepositoryManager();
 
             services.AddAutoMapper(typeof(Startup));
-
+            
             services.Configure<ApiBehaviorOptions>(options => {
             /*
              * suppress model filter and allows to use ModelState in our controllers 
              */
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            services.AddScoped<ValidationFilterAttribute>(); // custom action argument validation filter
+            services.AddScoped<ValidateCompanyExistsAttribute>(); // custom company entity checker helper
+            services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>(); // custom employee entity checker helper
             
             services.AddControllers(configure =>
             {

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
+using UltimateWebApi.ActionFilters;
 using UltimateWebApi.ModelBinders;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,10 +28,11 @@ namespace UltimateWebApi.Controllers
             this._mapper = mapper;
         }
 
+        
         [HttpGet]
-        public IActionResult GetCompanies()
+        public async Task<IActionResult> GetCompanies()
         {
-            var companies = this._repositoryManager.Company.GetAllCompanies(trackChanges: false); // getting readonly
+            var companies = await this._repositoryManager.Company.GetAllCompaniesAsync(trackChanges: false); // getting readonly
             //var companiesDto = companies.Select(c => new CompanyDto
             //{
             //    Id = c.Id,
@@ -40,22 +43,31 @@ namespace UltimateWebApi.Controllers
             return Ok(companiesDto);
         }
 
+        
         [HttpGet("{Id:Guid}", Name = "CompanyById")]
-        public IActionResult GetCompany(Guid Id)
+        [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+        public async Task<IActionResult> GetCompany(Guid Id)
         {
-            var company = this._repositoryManager.Company.GetCompany(Id, trackChanges: false);
-            if (company == null)
-            {
-                this._logger.LogInfo($"Company with {Id} Id does not exist.");
-                return NotFound();
-            }
+            // Used before created custom ValidateCompanyExistAttribute
+            // var company = await this._repositoryManager.Company.GetCompanyAsync(Id, trackChanges: false);
+            
+            var company = HttpContext.Items["company"] as Company;
+            
+            // Used before created ValidateCompanyExistsAttribute
+            // if (company == null)
+            // {
+            //     this._logger.LogInfo($"Company with {Id} Id does not exist.");
+            //     return NotFound();
+            // }
+            
             var companyDto = this._mapper.Map<CompanyDto>(company);
             return Ok(companyDto);
         }
 
+        
         // Ids:string => ModelBinder => IEnumerable<Guid> Ids
         [HttpGet("collection/({Ids})", Name = "CompanyCollection")]
-        public IActionResult GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
+        public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
         {
             if (Ids == null)
             {
@@ -63,7 +75,7 @@ namespace UltimateWebApi.Controllers
                 return BadRequest("Ids parameter is null");
             }
 
-            var companies = this._repositoryManager.Company.GetByIds(Ids, trachChanges: false);
+            var companies = await this._repositoryManager.Company.GetByIdsAsync(Ids, trachChanges: false);
             if (Ids.Count() != companies.Count())
             {
                 this._logger.LogError("Some ids are not valid in a collection.");
@@ -74,8 +86,9 @@ namespace UltimateWebApi.Controllers
             return Ok(compatiesDtoToView);
         }
 
+        
         [HttpPost("collection")]
-        public IActionResult CreateCompanyCollection([FromBody] IEnumerable<CompanyForCreateDto> collection)
+        public async Task<IActionResult> CreateCompanyCollection([FromBody] IEnumerable<CompanyForCreateDto> collection)
         {
             /*
              * POST:
@@ -103,7 +116,7 @@ namespace UltimateWebApi.Controllers
             {
                 this._repositoryManager.Company.CreateCompany(company);
             }
-            this._repositoryManager.SaveChanges();
+            await this._repositoryManager.SaveChangesAsync();
 
             var companiesDtoToView = this._mapper.Map<IEnumerable<CompanyDto>>(companies);
             var Ids = string.Join(",", companiesDtoToView.Select(c => c.Id));
@@ -111,8 +124,10 @@ namespace UltimateWebApi.Controllers
             return CreatedAtRoute("CompanyCollection", new { Ids }, companiesDtoToView);
         }
 
+        
         [HttpPost]
-        public IActionResult CreateCompany([FromBody] CompanyForCreateDto companyForCreateDto)
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreateDto companyForCreateDto)
         {
             /* 
              * We can do smth like this and employees will be created:
@@ -134,58 +149,76 @@ namespace UltimateWebApi.Controllers
                     ]
                 }
              */
-            if (companyForCreateDto == null)
-            {
-                this._logger.LogError("CompanyForCreateDto object sent from client is null.");
-                return BadRequest("CompanyForCreateDto object is null");
-            }
+            
+            // Used before we created a custom ValidationFilterAttribute
+            // if (companyForCreateDto == null)
+            // {
+            //     this._logger.LogError("CompanyForCreateDto object sent from client is null.");
+            //     return BadRequest("CompanyForCreateDto object is null");
+            // }
 
             var company = this._mapper.Map<Company>(companyForCreateDto);
+            
             this._repositoryManager.Company.CreateCompany(company);
-            this._repositoryManager.SaveChanges();
+            await this._repositoryManager.SaveChangesAsync();
 
             var companyDtoToView = this._mapper.Map<CompanyDto>(company);
 
             return CreatedAtRoute("CompanyById", new { Id = companyDtoToView.Id }, companyDtoToView);
         }
 
-        [HttpPut("{Id:Guid}")] // Fully update a resourse
-        public IActionResult UpdateCompany(Guid Id, [FromBody] CompanyForUpdateDto companyUpdateDto)
+        
+        [HttpPut("{Id:Guid}")] // Fully update a resource
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+        public async Task<IActionResult> UpdateCompany(Guid Id, [FromBody] CompanyForUpdateDto companyUpdateDto)
         {
-            if(companyUpdateDto == null)
-            {
-                this._logger.LogError("CompanyForUpdateDto object sent from client is null.");
-                return BadRequest("CompanyForUpdateDto object is null");
-            }
+            // Used before we created a custom ValidationFilterAttribute
+            // if(companyUpdateDto == null)
+            // {
+            //     this._logger.LogError("CompanyForUpdateDto object sent from client is null.");
+            //     return BadRequest("CompanyForUpdateDto object is null");
+            // }
 
-            var companyEntity = this._repositoryManager.Company.GetCompany(Id, trackChanges: true);
+            // Used before created custom ValidateCompanyExistAttribute
+            // var companyEntity = await this._repositoryManager.Company.GetCompanyAsync(Id, trackChanges: true);
 
-            if(companyEntity == null)
-            {
-                this._logger.LogInfo($"Company with {Id} Id does not exist.");
-                return NotFound();
-            }
+            var companyEntity = HttpContext.Items["company"] as Company;
+            
+            // Used before created ValidateCompanyExistsAttribute
+            // if(companyEntity == null)
+            // {
+            //     this._logger.LogInfo($"Company with {Id} Id does not exist.");
+            //     return NotFound();
+            // }
 
             this._mapper.Map(companyUpdateDto, companyEntity);
-            this._repositoryManager.SaveChanges();
+            await this._repositoryManager.SaveChangesAsync();
 
             return NoContent();
         }
 
+        
         [HttpDelete("{Id:Guid}")]
-        public IActionResult DeleteCompany(Guid Id)
+        [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+        public async Task<IActionResult> DeleteCompany(Guid Id)
         {
-            var company = this._repositoryManager.Company.GetCompany(Id, trackChanges: false);
-            if(company == null)
-            {
-                this._logger.LogInfo($"Company with id: {Id} doesn't exist in the database.");
-                return NotFound();
-            }
+            // Used before created ValidateCompanyExistsAttribute
+            
+            // var company = await this._repositoryManager.Company.GetCompanyAsync(Id, trackChanges: false);
+            
+            // if(company == null)
+            // {
+            //     this._logger.LogInfo($"Company with id: {Id} doesn't exist in the database.");
+            //     return NotFound();
+            // }
 
+            var company = HttpContext.Items["company"] as Company; 
+            
             this._repositoryManager.Company.DeleteCompany(company);
-            this._repositoryManager.SaveChanges();
+            await this._repositoryManager.SaveChangesAsync();
 
             return NoContent();
-        }
+        }   
     }
 }

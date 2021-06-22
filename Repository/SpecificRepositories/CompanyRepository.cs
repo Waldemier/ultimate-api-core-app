@@ -4,6 +4,8 @@ using System.Linq;
 using Contracts.SpecificRepositoryInterfaces;
 using Entities;
 using Entities.Models;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository.SpecificRepositories
 {
@@ -14,20 +16,20 @@ namespace Repository.SpecificRepositories
         {
         }
 
-        public IEnumerable<Company> GetAllCompanies(bool trackChanges) =>
-            FindAll(trackChanges)
+        public async Task<IEnumerable<Company>> GetAllCompaniesAsync(bool trackChanges) =>
+            await FindAll(trackChanges)
             .OrderBy(c => c.Name)
-            .ToList();
+            .ToListAsync();
 
-        public Company GetCompany(Guid Id, bool trackChanges) =>
-            FindByCondition(c => c.Id.Equals(Id), trackChanges)
-            .SingleOrDefault();
+        public async Task<Company> GetCompanyAsync(Guid Id, bool trackChanges) =>
+            await FindByCondition(c => c.Id.Equals(Id), trackChanges)
+            .SingleOrDefaultAsync();
 
         public void CreateCompany(Company company) => Create(company);
 
-        public IEnumerable<Company> GetByIds(IEnumerable<Guid> Ids, bool trachChanges) =>
-            FindByCondition(x => Ids.Contains(x.Id), trachChanges)
-            .ToList();
+        public async Task<IEnumerable<Company>> GetByIdsAsync(IEnumerable<Guid> Ids, bool trachChanges) =>
+            await FindByCondition(x => Ids.Contains(x.Id), trachChanges)
+            .ToListAsync();
 
         public void DeleteCompany(Company company) => Delete(company);
     }
