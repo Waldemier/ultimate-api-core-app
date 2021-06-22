@@ -7,6 +7,7 @@ using Entities;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 
 namespace Repository.SpecificRepositories
 {
@@ -20,10 +21,13 @@ namespace Repository.SpecificRepositories
             bool trackChanges)
         {
             var employees = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+                .FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge) // custom option implemented in Repository Extension folder
+                .Search(employeeParameters.SearchTerm)
                 .OrderBy(e => e.Name) // sorting by name
                 //.Skip((employeeParameters.PageNumber - 1) * employeeParameters.PageSize) // 2-1 * 2 = 2 - skip, take 2 next (because page size = 2 for example)
                 //.Take(employeeParameters.PageSize)  
                 .ToListAsync();
+            
             return PagedList<Employee>.ToPagedList(employees, employeeParameters.PageNumber,
                 employeeParameters.PageSize);
         }

@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace Entities.RequestFeatures
 {
+    /// <summary>
+    /// Our custom list.
+    /// This class inherits list object, in accordance we has every methods, which in him implemented. 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PagedList<T> : List<T>
     {
         public MetaData MetaData { get; set; }
@@ -12,11 +17,11 @@ namespace Entities.RequestFeatures
             MetaData = new MetaData
             {
                 TotalCount = count,
-                PageSize = pageSize,
+                PageSize = pageSize, // amount of elements by once of page
                 CurrentPage = pageNumber,
                 TotalPages = (int)Math.Ceiling(count / (double)pageSize)
             };
-            AddRange(items); // Added items to List
+            base.AddRange(items); // Added items to List
         }
         
         public static PagedList<T> ToPagedList(IEnumerable<T> source, int pageNumber, int pageSize)
