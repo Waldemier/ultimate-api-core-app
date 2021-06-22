@@ -46,7 +46,7 @@ namespace UltimateWebApi.Controllers
         
         [HttpGet("{Id:Guid}", Name = "CompanyById")]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
-        public async Task<IActionResult> GetCompany(Guid Id)
+        public IActionResult GetCompany(Guid Id)
         {
             // Used before created custom ValidateCompanyExistAttribute
             // var company = await this._repositoryManager.Company.GetCompanyAsync(Id, trackChanges: false);

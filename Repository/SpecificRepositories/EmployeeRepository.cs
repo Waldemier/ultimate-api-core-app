@@ -23,7 +23,8 @@ namespace Repository.SpecificRepositories
             var employees = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
                 .FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge) // custom option implemented in Repository Extension folder
                 .Search(employeeParameters.SearchTerm)
-                .OrderBy(e => e.Name) // sorting by name
+                .Sort(employeeParameters.OrderBy)
+                //.OrderBy(e => e.Name) // sorting by name
                 //.Skip((employeeParameters.PageNumber - 1) * employeeParameters.PageSize) // 2-1 * 2 = 2 - skip, take 2 next (because page size = 2 for example)
                 //.Take(employeeParameters.PageSize)  
                 .ToListAsync();
