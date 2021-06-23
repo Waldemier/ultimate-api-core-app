@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using UltimateWebApi.ActionFilters;
+using UltimateWebApi.Utility;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,16 +30,19 @@ namespace UltimateWebApi.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
         private readonly IDataShaper<EmployeeDto> _dataShaper;
+        private readonly EmployeeLinks _employeeLinks;
         
-        public EmployeesController(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper, IDataShaper<EmployeeDto> dataShaper)
+        public EmployeesController(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper, IDataShaper<EmployeeDto> dataShaper, EmployeeLinks employeeLinks)
         {
             this._repositoryManager = repositoryManager;
             this._logger = logger;
             this._mapper = mapper;
             this._dataShaper = dataShaper;
+            this._employeeLinks = employeeLinks;
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetEmployees(Guid companyId, 
             [FromQuery] EmployeeParameters employeeParameters)
         {
@@ -60,9 +64,14 @@ namespace UltimateWebApi.Controllers
             
             var employeesDto = this._mapper.Map<IEnumerable<EmployeeDto>>(employees);
 
-            return Ok(this._dataShaper.ShapeData(employeesDto, employeeParameters.Fields));
+            var links = this._employeeLinks.TryGenerateLinks(employeesDto, employeeParameters.Fields, companyId, HttpContext);
+            
+            // used before 
+            // return Ok(this._dataShaper.ShapeData(employeesDto, employeeParameters.Fields));
+            return links.HasLinks ? Ok(links.LinkedEntities) : Ok(links.ShapedEntities);
         }
 
+        
         [HttpGet("{Id:Guid}", Name = "GetEmployeeForCompany")]
         public async Task<IActionResult> GetEmployee(Guid companyId, Guid Id)
         {
@@ -84,6 +93,7 @@ namespace UltimateWebApi.Controllers
             return Ok(employeeDto);
         }
 
+        
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateEmployee(Guid companyId, [FromBody] EmployeeForCreateDto employeeForCreateDto)
@@ -118,6 +128,7 @@ namespace UltimateWebApi.Controllers
             return CreatedAtRoute("GetEmployeeForCompany", new { companyId, Id = employeeDtoToView.Id }, employeeDtoToView);
         }
 
+        
         [HttpPut("{Id:Guid}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]

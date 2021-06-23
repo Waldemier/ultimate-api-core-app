@@ -1,7 +1,10 @@
+using System.Linq;
 using Contracts;
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,5 +42,29 @@ namespace UltimateWebApi.Extensions
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
+
+        public static void AddCustomMediaTypes(this IServiceCollection services)
+        {
+            services.Configure<MvcOptions>(config =>
+            {
+                var newtonSoftJsonOutputFormatter =
+                    config.OutputFormatters.OfType<NewtonsoftJsonOutputFormatter>()?.FirstOrDefault();
+                if (newtonSoftJsonOutputFormatter != null)
+                {
+                    newtonSoftJsonOutputFormatter
+                        .SupportedMediaTypes
+                        .Add("application/vnd.codemaze.hateoas+json");
+                }
+
+                var xmlOutputFormatter = 
+                    config.OutputFormatters.OfType<XmlDataContractSerializerOutputFormatter>()?.FirstOrDefault();
+                if (xmlOutputFormatter != null)
+                {
+                    xmlOutputFormatter
+                        .SupportedMediaTypes
+                        .Add("application/vnd.codemaze.hateoas+json");
+                }
+            });
+        }
     }
 }

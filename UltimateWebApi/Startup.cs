@@ -13,6 +13,7 @@ using NLog;
 using Repository.DataShaping;
 using UltimateWebApi.ActionFilters;
 using UltimateWebApi.Extensions;
+using UltimateWebApi.Utility;
 
 namespace UltimateWebApi
 {
@@ -50,6 +51,10 @@ namespace UltimateWebApi
             services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>(); // custom employee entity checker helper
 
             services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+
+            services.AddScoped<ValidateMediaTypeAttribute>();
+
+            services.AddScoped<EmployeeLinks>();
             
             services.AddControllers(configure =>
             {
@@ -58,6 +63,8 @@ namespace UltimateWebApi
             }).AddNewtonsoftJson()
               .AddXmlDataContractSerializerFormatters()
               .AddCustomCSVFormatter();
+            
+            services.AddCustomMediaTypes();
             
             services.AddSwaggerGen(c =>
             {

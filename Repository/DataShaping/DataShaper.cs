@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using Contracts;
+using Entities.Models;
 
 namespace Repository.DataShaping
 {
@@ -28,7 +29,7 @@ namespace Repository.DataShaping
         /// <param name="entities"></param>
         /// <param name="fieldsString"></param>
         /// <returns>All specify objects with specific fields.</returns>
-        public IEnumerable<ExpandoObject> ShapeData(IEnumerable<T> entities, string fieldsString)
+        public IEnumerable<ShapedEntityWrapper> ShapeData(IEnumerable<T> entities, string fieldsString)
         {
             var requiredProperties = GetRequiredProperties(fieldsString);
             return FetchData(entities, requiredProperties);
@@ -40,7 +41,7 @@ namespace Repository.DataShaping
         /// <param name="entity"></param>
         /// <param name="fieldsString"></param>
         /// <returns>One specify object with him specific fields.</returns>
-        public ExpandoObject ShapeData(T entity, string fieldsString)
+        public ShapedEntityWrapper ShapeData(T entity, string fieldsString)
         {
             var requiredProperties = GetRequiredProperties(fieldsString);
             return FetchDataForEntity(entity, requiredProperties);
@@ -82,9 +83,9 @@ namespace Repository.DataShaping
         /// <param name="entities"></param>
         /// <param name="requiredProperties"></param>
         /// <returns></returns>
-        private IEnumerable<ExpandoObject> FetchData(IEnumerable<T> entities, IEnumerable<PropertyInfo> requiredProperties)
+        private IEnumerable<ShapedEntityWrapper> FetchData(IEnumerable<T> entities, IEnumerable<PropertyInfo> requiredProperties)
         {
-            var shapedData = new List<ExpandoObject>();
+            var shapedData = new List<ShapedEntityWrapper>();
 
             foreach (var entity in entities)
             {
@@ -101,15 +102,20 @@ namespace Repository.DataShaping
         /// <param name="entity"></param>
         /// <param name="requiredProperties"></param>
         /// <returns>key/value of object property</returns>
-        private ExpandoObject FetchDataForEntity(T entity, IEnumerable<PropertyInfo> requiredProperties)
+        private ShapedEntityWrapper FetchDataForEntity(T entity, IEnumerable<PropertyInfo> requiredProperties)
         {
-            var shapedObject = new ExpandoObject();
-
+            //var shapedObject = new ExpandoObject();
+            var shapedObject = new ShapedEntityWrapper();
+            
             foreach (var property in requiredProperties)
             {
                 var objectPropertyValue = property.GetValue(entity);
-                shapedObject.TryAdd(property.Name, objectPropertyValue);
+                        shapedObject.EntityProperties.TryAdd(property.Name, objectPropertyValue);
             }
+
+            var objectIdProperty = entity.GetType().GetProperty("Id");
+            shapedObject.Id = (Guid)objectIdProperty.GetValue(entity);
+            
             return shapedObject;
         }
     }
