@@ -21,15 +21,21 @@ namespace UltimateWebApi.Controllers
     [Route("api/companies/{companyId}/employees")]
     public class EmployeesController : ControllerBase
     {
+        /*
+         * https://localhost:5001/api/companies/c9d4c053-49b6-410c-bc78-2d54a9991870/employees?
+         *                          pageNumber=1&pageSize=4&minAge=23&maxAge=40&searchTerm=A&orderBy=name,age desc&fields=name,age
+         */
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-
-        public EmployeesController(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
+        private readonly IDataShaper<EmployeeDto> _dataShaper;
+        
+        public EmployeesController(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper, IDataShaper<EmployeeDto> dataShaper)
         {
             this._repositoryManager = repositoryManager;
             this._logger = logger;
             this._mapper = mapper;
+            this._dataShaper = dataShaper;
         }
 
         [HttpGet]
@@ -54,7 +60,7 @@ namespace UltimateWebApi.Controllers
             
             var employeesDto = this._mapper.Map<IEnumerable<EmployeeDto>>(employees);
 
-            return Ok(employeesDto);
+            return Ok(this._dataShaper.ShapeData(employeesDto, employeeParameters.Fields));
         }
 
         [HttpGet("{Id:Guid}", Name = "GetEmployeeForCompany")]

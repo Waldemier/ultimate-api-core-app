@@ -1,5 +1,6 @@
 using System.IO;
 using Contracts;
+using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
+using Repository.DataShaping;
 using UltimateWebApi.ActionFilters;
 using UltimateWebApi.Extensions;
 
@@ -46,6 +48,8 @@ namespace UltimateWebApi
             services.AddScoped<ValidationFilterAttribute>(); // custom action argument validation filter
             services.AddScoped<ValidateCompanyExistsAttribute>(); // custom company entity checker helper
             services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>(); // custom employee entity checker helper
+
+            services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
             
             services.AddControllers(configure =>
             {
