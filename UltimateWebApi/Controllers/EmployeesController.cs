@@ -42,6 +42,7 @@ namespace UltimateWebApi.Controllers
         }
 
         [HttpGet]
+        [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetEmployees(Guid companyId, 
             [FromQuery] EmployeeParameters employeeParameters)

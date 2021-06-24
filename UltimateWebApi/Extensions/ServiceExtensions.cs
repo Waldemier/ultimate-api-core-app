@@ -5,10 +5,12 @@ using LoggerService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repository;
+using UltimateWebApi.Controllers;
 using UltimateWebApi.Csv;
 
 namespace UltimateWebApi.Extensions
@@ -54,16 +56,37 @@ namespace UltimateWebApi.Extensions
                     newtonSoftJsonOutputFormatter
                         .SupportedMediaTypes
                         .Add("application/vnd.codemaze.hateoas+json");
+                    newtonSoftJsonOutputFormatter
+                        .SupportedMediaTypes
+                        .Add("application/vnd.codemaze.apiroot+json");
                 }
 
-                var xmlOutputFormatter = 
+                var xmlOutputFormatter =
                     config.OutputFormatters.OfType<XmlDataContractSerializerOutputFormatter>()?.FirstOrDefault();
                 if (xmlOutputFormatter != null)
                 {
                     xmlOutputFormatter
                         .SupportedMediaTypes
-                        .Add("application/vnd.codemaze.hateoas+json");
+                        .Add("application/vnd.codemaze.hateoas+xml");
+                    xmlOutputFormatter
+                        .SupportedMediaTypes
+                        .Add("application/vnd.codemaze.apiroot+xml");
                 }
+            });
+        }
+        
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(options =>
+            {
+                options.ReportApiVersions = true; // Adds the API version to the response header.
+                options.AssumeDefaultVersionWhenUnspecified = true; // It specifies the default API version if the client doesn’t send one.
+                options.DefaultApiVersion = new ApiVersion(1, 0); // sets the default version count.
+                options.ApiVersionReader = new HeaderApiVersionReader("api-version"); // Or QueryApiVersionReader for query string versioning
+                
+                // Registers versions for our controllers, that give us to not implement the ApiVersion attribute.
+                options.Conventions.Controller<CompaniesController>().HasApiVersion(new ApiVersion(1,0));
+                options.Conventions.Controller<CompaniesV2Controller>().HasDeprecatedApiVersion(new ApiVersion(2, 0));
             });
         }
     }

@@ -28,7 +28,7 @@ namespace Repository.DataShaping
         /// </summary>
         /// <param name="entities"></param>
         /// <param name="fieldsString"></param>
-        /// <returns>All specify objects with specific fields.</returns>
+        /// <returns>All specify objects with specific fields (properties).</returns>
         public IEnumerable<ShapedEntityWrapper> ShapeData(IEnumerable<T> entities, string fieldsString)
         {
             var requiredProperties = GetRequiredProperties(fieldsString);
@@ -110,7 +110,7 @@ namespace Repository.DataShaping
             foreach (var property in requiredProperties)
             {
                 var objectPropertyValue = property.GetValue(entity);
-                        shapedObject.EntityProperties.TryAdd(property.Name, objectPropertyValue);
+                shapedObject.EntityProperties.TryAdd(property.Name, objectPropertyValue);
             }
 
             var objectIdProperty = entity.GetType().GetProperty("Id");

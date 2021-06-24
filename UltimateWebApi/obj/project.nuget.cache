@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cW51o/Bk0IzRm00m1TD0R4Z9QHOddcH4awawt7Q8BkNTjSeIC5zDsHNJbPOudxkmlAwBM179s3wCML29l4y2uw==",
+  "dgSpecHash": "blYR7Roldk2JjcBB5hTfmGkk8hvnrtdek/ohLBeE8i5KZ647ckyhck2pauY8s1pvdyteERg6eOsv+mCT89yFiw==",
   "success": true,
   "projectFilePath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "/Users/user/.nuget/packages/json.net/1.0.33/json.net.1.0.33.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.7/microsoft.aspnetcore.jsonpatch.5.0.7.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/5.0.7/microsoft.aspnetcore.mvc.newtonsoftjson.5.0.7.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.aspnetcore.mvc.versioning/5.0.0/microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.data.sqlclient/2.0.1/microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "/Users/user/.nuget/packages/microsoft.data.sqlclient.sni.runtime/2.0.1/microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

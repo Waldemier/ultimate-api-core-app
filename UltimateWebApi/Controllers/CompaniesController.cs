@@ -14,6 +14,7 @@ using UltimateWebApi.ModelBinders;
 
 namespace UltimateWebApi.Controllers
 {
+    //[ApiVersion("1.0")]
     [ApiController]
     [Route("api/companies")]
     public class CompaniesController : ControllerBase
@@ -29,7 +30,7 @@ namespace UltimateWebApi.Controllers
         }
 
         
-        [HttpGet]
+        [HttpGet(Name = "GetCompanies")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies = await this._repositoryManager.Company.GetAllCompaniesAsync(trackChanges: false); // getting readonly
@@ -125,7 +126,7 @@ namespace UltimateWebApi.Controllers
         }
 
         
-        [HttpPost]
+        [HttpPost(Name = "CreateCompany")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreateDto companyForCreateDto)
         {
@@ -219,6 +220,14 @@ namespace UltimateWebApi.Controllers
             await this._repositoryManager.SaveChangesAsync();
 
             return NoContent();
-        }   
+        }
+
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
+        {
+            HttpContext.Response.Headers.Add("Allow", "GET, OPTIONS, POST, PUT");
+            
+            return Ok();
+        }
     }
 }

@@ -55,6 +55,8 @@ namespace UltimateWebApi
             services.AddScoped<ValidateMediaTypeAttribute>();
 
             services.AddScoped<EmployeeLinks>();
+
+            services.ConfigureVersioning();
             
             services.AddControllers(configure =>
             {
