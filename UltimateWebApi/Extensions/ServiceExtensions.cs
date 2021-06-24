@@ -2,6 +2,7 @@ using System.Linq;
 using Contracts;
 using Entities;
 using LoggerService;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -89,5 +90,19 @@ namespace UltimateWebApi.Extensions
                 options.Conventions.Controller<CompaniesV2Controller>().HasDeprecatedApiVersion(new ApiVersion(2, 0));
             });
         }
+
+        public static void ConfigureResponseCaching(this IServiceCollection services) =>
+            services.AddResponseCaching();
+
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) =>
+            services.AddHttpCacheHeaders(expirationOpt => // Configure cache parameters for all controllers
+            {
+                expirationOpt.MaxAge = 65;
+                expirationOpt.CacheLocation = CacheLocation.Private; // holds an age header of cache lives
+            },
+            validationOpt =>
+            {
+                validationOpt.MustRevalidate = true;
+            });
     }
 }

@@ -41,7 +41,7 @@ namespace UltimateWebApi.ActionFilters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 }

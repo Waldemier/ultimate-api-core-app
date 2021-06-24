@@ -57,11 +57,16 @@ namespace UltimateWebApi
             services.AddScoped<EmployeeLinks>();
 
             services.ConfigureVersioning();
+
+            services.AddHttpContextAccessor(); // Needs for Marvin.Cache.Headers library works
+            services.ConfigureResponseCaching(); // + for additional for this we need to register caching middleware.
+            services.ConfigureHttpCacheHeaders(); // Implements validation for cache headers
             
             services.AddControllers(configure =>
             {
                 configure.RespectBrowserAcceptHeader = true;
                 configure.ReturnHttpNotAcceptable = true; // allows us to get 406 Not Acceptable status if the server does not support media type of request.
+                configure.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 }); // Sets duration for all caches with specify name
             }).AddNewtonsoftJson()
               .AddXmlDataContractSerializerFormatters()
               .AddCustomCSVFormatter();
@@ -97,6 +102,9 @@ namespace UltimateWebApi
             {
                 ForwardedHeaders = ForwardedHeaders.All
             });
+
+            app.UseResponseCaching(); // Need to be provided above a routing middleware.
+            app.UseHttpCacheHeaders(); // Implements validation for cache headers
             
             app.UseRouting();
 

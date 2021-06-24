@@ -1,4 +1,4 @@
-2021-06-23 00:32:28.5088 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+2021-06-24 20:20:57.4479 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
    at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -9,8 +9,9 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 00:37:14.7953 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+2021-06-24 20:22:06.9622 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
    at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -21,8 +22,9 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 00:38:12.5918 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+2021-06-24 20:24:41.9670 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
    at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -33,8 +35,9 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 00:38:55.1320 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+2021-06-24 20:24:49.2546 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
    at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
@@ -45,13 +48,11 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 17:55:01.1318 ERROR Something went wrong: System.InvalidCastException: Unable to cast object of type 'Microsoft.Net.Http.Headers.MediaTypeHeaderValue' to type 'Microsoft.AspNetCore.Mvc.Formatters.MediaType'.
-   at UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 45
-   at UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(IEnumerable`1 employeesDto, String fields, Guid companyId, HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 31
-   at UltimateWebApi.Controllers.EmployeesController.GetEmployees(Guid companyId, EmployeeParameters employeeParameters) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Controllers/EmployeesController.cs:line 67
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+2021-06-24 20:26:22.0642 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
@@ -60,13 +61,11 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 17:55:16.2085 ERROR Something went wrong: System.InvalidCastException: Unable to cast object of type 'Microsoft.Net.Http.Headers.MediaTypeHeaderValue' to type 'Microsoft.AspNetCore.Mvc.Formatters.MediaType'.
-   at UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 45
-   at UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(IEnumerable`1 employeesDto, String fields, Guid companyId, HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 31
-   at UltimateWebApi.Controllers.EmployeesController.GetEmployees(Guid companyId, EmployeeParameters employeeParameters) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Controllers/EmployeesController.cs:line 67
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+2021-06-24 20:28:35.8875 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
@@ -75,13 +74,11 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 17:56:27.4539 ERROR Something went wrong: System.InvalidCastException: Unable to cast object of type 'Microsoft.Net.Http.Headers.MediaTypeHeaderValue' to type 'Microsoft.AspNetCore.Mvc.Formatters.MediaType'.
-   at UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 45
-   at UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(IEnumerable`1 employeesDto, String fields, Guid companyId, HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 31
-   at UltimateWebApi.Controllers.EmployeesController.GetEmployees(Guid companyId, EmployeeParameters employeeParameters) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Controllers/EmployeesController.cs:line 67
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+2021-06-24 21:34:47.2830 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
@@ -90,13 +87,13 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.HandleResponse(HttpContext httpContext)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.Invoke(HttpContext httpContext, IValidatorValueInvalidator validatorValueInvalidator)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 17:58:00.3511 ERROR Something went wrong: System.InvalidCastException: Unable to cast object of type 'Microsoft.Net.Http.Headers.MediaTypeHeaderValue' to type 'Microsoft.AspNetCore.Mvc.Formatters.MediaType'.
-   at UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 45
-   at UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(IEnumerable`1 employeesDto, String fields, Guid companyId, HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 31
-   at UltimateWebApi.Controllers.EmployeesController.GetEmployees(Guid companyId, EmployeeParameters employeeParameters) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Controllers/EmployeesController.cs:line 67
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+2021-06-24 21:35:11.6435 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
@@ -105,13 +102,13 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.HandleResponse(HttpContext httpContext)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.Invoke(HttpContext httpContext, IValidatorValueInvalidator validatorValueInvalidator)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
-2021-06-23 18:01:08.0413 ERROR Something went wrong: System.InvalidCastException: Unable to cast object of type 'Microsoft.Net.Http.Headers.MediaTypeHeaderValue' to type 'System.Net.Http.Headers.MediaTypeHeaderValue'.
-   at UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 45
-   at UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(IEnumerable`1 employeesDto, String fields, Guid companyId, HttpContext httpContext) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Utility/EmployeeLinks.cs:line 31
-   at UltimateWebApi.Controllers.EmployeesController.GetEmployees(Guid companyId, EmployeeParameters employeeParameters) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/Controllers/EmployeesController.cs:line 67
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+2021-06-24 21:36:31.4858 ERROR Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at UltimateWebApi.ActionFilters.ValidationFilterAttribute.OnActionExecuted(ActionExecutedContext context) in /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/ActionFilters/ValidationFilterAttribute.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
@@ -120,4 +117,7 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.HandleResponse(HttpContext httpContext)
+   at Marvin.Cache.Headers.HttpCacheHeadersMiddleware.Invoke(HttpContext httpContext, IValidatorValueInvalidator validatorValueInvalidator)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)

@@ -6,6 +6,7 @@ using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Mvc;
 using UltimateWebApi.ActionFilters;
 using UltimateWebApi.ModelBinders;
@@ -17,6 +18,8 @@ namespace UltimateWebApi.Controllers
     //[ApiVersion("1.0")]
     [ApiController]
     [Route("api/companies")]
+    //[ResponseCache(CacheProfileName = "120SecondsDuration")] // Applies to all of the actions, except of action which have their ResponseCache attribute
+    
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
@@ -47,6 +50,9 @@ namespace UltimateWebApi.Controllers
         
         [HttpGet("{Id:Guid}", Name = "CompanyById")]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+        //[ResponseCache(Duration = 60)] // commented because Marvin.Cache.Headers library implements this for us
+        [HttpCacheExpiration(CacheLocation =  CacheLocation.Public, MaxAge = 60)]
+        [HttpCacheValidation(MustRevalidate = false)]
         public IActionResult GetCompany(Guid Id)
         {
             // Used before created custom ValidateCompanyExistAttribute
