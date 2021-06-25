@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using AspNetCoreRateLimit;
 using Contracts;
 using Entities;
 using LoggerService;
@@ -104,5 +106,44 @@ namespace UltimateWebApi.Extensions
             {
                 validationOpt.MustRevalidate = true;
             });
+        
+        public static void ConfigureRateLimitingOptions(this IServiceCollection services) 
+        {
+            /*
+             * Implements:
+             * X-Rate-Limit-Limit
+             * X-Rate-Limit-Remaining
+             * X-Rate-Limit-Reset
+             */
+            // Implements rules for rate limits configuration
+            var rateLimitRules = new List<RateLimitRule>
+            {
+                new RateLimitRule
+                {
+                    Endpoint = "*",
+                    Limit = 3,
+                    Period = "5m"
+                }
+            };
+            
+            // Set general configuration for rate limits
+            services.Configure<IpRateLimitOptions>(options =>
+            {
+                options.GeneralRules = rateLimitRules;
+            });
+            
+            // All this dependencies provides by AspNetCoreRateLimit library
+            // They serve the purpose of storing rate limit counters and policies as well as adding configuration.
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            // configuration (resolvers, counter key builders)
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+            
+            // OR as an alternative for three above connections:
+            // inject counter and rules stores
+            // services.AddInMemoryRateLimiting();
+        }
     }
 }

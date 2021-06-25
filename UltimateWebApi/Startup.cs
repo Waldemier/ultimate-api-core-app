@@ -1,4 +1,5 @@
 using System.IO;
+using AspNetCoreRateLimit;
 using Contracts;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Builder;
@@ -61,7 +62,12 @@ namespace UltimateWebApi
             services.AddHttpContextAccessor(); // Needs for Marvin.Cache.Headers library works
             services.ConfigureResponseCaching(); // + for additional for this we need to register caching middleware.
             services.ConfigureHttpCacheHeaders(); // Implements validation for cache headers
-            
+
+            // needed to store rate limit counters and ip rules
+            services.AddMemoryCache();
+            services.ConfigureRateLimitingOptions();
+            services.AddHttpContextAccessor();
+
             services.AddControllers(configure =>
             {
                 configure.RespectBrowserAcceptHeader = true;
@@ -96,6 +102,7 @@ namespace UltimateWebApi
             app.UseStaticFiles();
 
             app.UseCors("CorsPolicy");
+
             
             // Will forward proxy headers to the current request. This will help us during application deployment.
             app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -105,6 +112,8 @@ namespace UltimateWebApi
 
             app.UseResponseCaching(); // Need to be provided above a routing middleware.
             app.UseHttpCacheHeaders(); // Implements validation for cache headers
+            
+            app.UseIpRateLimiting(); // Need for rate limiting work. From AspNetCoreRateLimit library. And provides 429 Too Many Requests status.
             
             app.UseRouting();
 
