@@ -7,6 +7,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UltimateWebApi.ActionFilters;
 using UltimateWebApi.ModelBinders;
@@ -33,16 +34,18 @@ namespace UltimateWebApi.Controllers
         }
 
         
-        [HttpGet(Name = "GetCompanies")]
+        [HttpGet(Name = "GetCompanies"), Authorize(Roles = "Manager")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies = await this._repositoryManager.Company.GetAllCompaniesAsync(trackChanges: false); // getting readonly
+            
             //var companiesDto = companies.Select(c => new CompanyDto
             //{
             //    Id = c.Id,
             //    Name = c.Name,
             //    FullAddress = string.Join(' ', c.Address, c.Country)
             //}).ToList();
+            
             var companiesDto = this._mapper.Map<IEnumerable<CompanyDto>>(companies);
             return Ok(companiesDto);
         }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
+using Repository;
 using Repository.DataShaping;
 using UltimateWebApi.ActionFilters;
 using UltimateWebApi.Extensions;
@@ -78,6 +79,11 @@ namespace UltimateWebApi
               .AddCustomCSVFormatter();
             
             services.AddCustomMediaTypes();
+
+            services.AddAuthentication();
+            services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
+            services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             
             services.AddSwaggerGen(c =>
             {
@@ -117,6 +123,7 @@ namespace UltimateWebApi
             
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

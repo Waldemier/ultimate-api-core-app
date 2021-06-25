@@ -1,17 +1,22 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using AspNetCoreRateLimit;
 using Contracts;
 using Entities;
+using Entities.Models;
 using LoggerService;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Repository;
 using UltimateWebApi.Controllers;
 using UltimateWebApi.Csv;
@@ -114,14 +119,16 @@ namespace UltimateWebApi.Extensions
              * X-Rate-Limit-Limit
              * X-Rate-Limit-Remaining
              * X-Rate-Limit-Reset
+             * Retry-After
              */
+            
             // Implements rules for rate limits configuration
             var rateLimitRules = new List<RateLimitRule>
             {
                 new RateLimitRule
                 {
                     Endpoint = "*",
-                    Limit = 3,
+                    Limit = 30,
                     Period = "5m"
                 }
             };
@@ -135,15 +142,57 @@ namespace UltimateWebApi.Extensions
             // All this dependencies provides by AspNetCoreRateLimit library
             // They serve the purpose of storing rate limit counters and policies as well as adding configuration.
             services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
-
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
-            // configuration (resolvers, counter key builders)
-            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>(); // configuration (resolvers, counter key builders)
             services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
             
             // OR as an alternative for three above connections:
             // inject counter and rules stores
             // services.AddInMemoryRateLimiting();
         }
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentityCore<User>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 10;
+                options.User.RequireUniqueEmail = true;
+            });
+
+            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
+            
+            builder.AddEntityFrameworkStores<RepositoryContext>()
+                .AddDefaultTokenProviders();
+        }
+
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            
+            // register the JWT authentication middleware by calling the method
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    
+                    ValidIssuer = jwtSettings.GetSection("ValidIssuer").Value,
+                    ValidAudience = jwtSettings.GetSection("ValidAudience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.GetSection("Secret").Value))
+                };
+            });
+        } 
     }
 }
