@@ -20,7 +20,7 @@ namespace UltimateWebApi.Controllers
     [ApiController]
     [Route("api/companies")]
     //[ResponseCache(CacheProfileName = "120SecondsDuration")] // Applies to all of the actions, except of action which have their ResponseCache attribute
-    
+    [ApiExplorerSettings(GroupName = "v1")]
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
@@ -33,7 +33,10 @@ namespace UltimateWebApi.Controllers
             this._mapper = mapper;
         }
 
-        
+        /// <summary>
+        /// Gets the list of all companies
+        /// </summary>
+        /// <returns>The companies list</returns>
         [HttpGet(Name = "GetCompanies"), Authorize(Roles = "Manager")]
         public async Task<IActionResult> GetCompanies()
         {
@@ -134,8 +137,18 @@ namespace UltimateWebApi.Controllers
             return CreatedAtRoute("CompanyCollection", new { Ids }, companiesDtoToView);
         }
 
-        
+        /// <summary>
+        /// Creates a newly created company
+        /// </summary>
+        /// <param name="companyForCreateDto"></param>
+        /// <returns>A newly created company</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
+        /// <response code="422">If the model is invalid</response>
         [HttpPost(Name = "CreateCompany")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(422)]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreateDto companyForCreateDto)
         {

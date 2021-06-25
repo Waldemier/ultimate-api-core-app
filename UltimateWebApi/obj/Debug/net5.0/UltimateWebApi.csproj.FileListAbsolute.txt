@@ -85,3 +85,4 @@
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/bin/Debug/net5.0/Microsoft.Extensions.Identity.Core.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/bin/Debug/net5.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/bin/Debug/net5.0/UltimateWebApi.xml

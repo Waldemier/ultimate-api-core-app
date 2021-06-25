@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HIh/nCFNoa9MJawU12P1TPmbGB0jaYn5W6BjRCqpE9CE+UPbHB5wnSPpN0sE7dS4wIW0cFIEZYxQ6FpGGo4uhg==",
+  "dgSpecHash": "80bvlwLRO7TryWx+xRmoUaolvp4LEx8JjS+L0jTrfkEpZkMewkDJjzrOR+z0WNm2zpdaEKIIrxUihlyG0l1h1Q==",
   "success": true,
   "projectFilePath": "/Users/user/Desktop/VS/UltimateWebApiBook/UltimateWebApi/UltimateWebApi/UltimateWebApi.csproj",
   "expectedPackageFiles": [
@@ -64,9 +64,9 @@
     "/Users/user/.nuget/packages/nlog.extensions.logging/1.7.2/nlog.extensions.logging.1.7.2.nupkg.sha512",
     "/Users/user/.nuget/packages/runtime.native.system/4.3.0/runtime.native.system.4.3.0.nupkg.sha512",
     "/Users/user/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
-    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
-    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
-    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swagger/6.1.4/swashbuckle.aspnetcore.swagger.6.1.4.nupkg.sha512",
+    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.1.4/swashbuckle.aspnetcore.swaggergen.6.1.4.nupkg.sha512",
+    "/Users/user/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.1.4/swashbuckle.aspnetcore.swaggerui.6.1.4.nupkg.sha512",
     "/Users/user/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
     "/Users/user/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/user/.nuget/packages/system.collections.concurrent/4.3.0/system.collections.concurrent.4.3.0.nupkg.sha512",

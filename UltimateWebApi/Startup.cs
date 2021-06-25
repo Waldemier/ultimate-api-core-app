@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using AspNetCoreRateLimit;
 using Contracts;
 using Entities.DataTransferObjects;
@@ -87,7 +90,56 @@ namespace UltimateWebApi
             
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "UltimateWebApi", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "UltimateWebApi", 
+                    Version = "v1",
+                    Description = "CompanyEmployees API",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact()
+                    {
+                        Name = "Wolodymyr",
+                        Email = "wolodymyr.d.07@gmail.com",
+                        Url = new Uri("https://twitter.com/...")
+                    },
+                    License = new OpenApiLicense()
+                    {
+                        Name = "CompanyEmployees API LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+                c.SwaggerDoc("v2", new OpenApiInfo {Title = "UltimateWebApi", Version = "v2"});
+                
+                // With main properties modified and this three below lines of code we implemented more description for any action which have triple slash comment
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                
+                // Above two methods = Swagger Configuration for using JWT
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme()
+                        {
+                            Reference = new OpenApiReference()
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name = "Bearer",
+                        },
+                        new List<string>()
+                    }
+                });
             });
         }
 
@@ -98,7 +150,11 @@ namespace UltimateWebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UltimateWebApi v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "UltimateWebApi v1");
+                    c.SwaggerEndpoint("/swagger/v2/swagger.json", "UltimateWebApi v2");
+                });
             }
 
             app.ConfigureExceptionHandler(logger); // custom exception middleware

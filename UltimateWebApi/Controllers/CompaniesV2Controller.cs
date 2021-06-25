@@ -13,6 +13,7 @@ namespace UltimateWebApi.Controllers
     //[ApiVersion("2.0", Deprecated = true)] // Deprecated = true повідомляє нам про те, що ця версія застаріла (але ми все рівно можемо нею користуватися)
     [Route("api/companies")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class CompaniesV2Controller : ControllerBase
     {
         private readonly IRepositoryManager _repository;
