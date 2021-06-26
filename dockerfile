@@ -21,5 +21,7 @@ WORKDIR /app
 EXPOSE 80
 # Copy the published app to this new runtime-only container.
 COPY --from=build-env /app/ultimateAPI .
+#Adding this env variable for swagger support.
+ENV ASPNETCORE_ENVIRONMENT=Development
 # To run the app, run `dotnet UltimateWebApi.dll`, which we just copied over.
 ENTRYPOINT ["dotnet", "UltimateWebApi.dll"] 
