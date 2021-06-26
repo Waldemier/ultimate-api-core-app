@@ -16,7 +16,7 @@ RUN dotnet publish ./UltimateWebApi/UltimateWebApi.csproj -c Release -o ultimate
 # We don't need the SDK anymore, so this will produce a lighter-weight image
 # that can still run the app.
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
-WORKDIR /app
+WORKDIR /main
 # Expose port 80 to your local machine so you can access the app.
 EXPOSE 80
 # Copy the published app to this new runtime-only container.
