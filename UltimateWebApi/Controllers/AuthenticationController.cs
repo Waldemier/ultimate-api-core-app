@@ -65,6 +65,12 @@ namespace UltimateWebApi.Controllers
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto userAuthDto)
         {
+            /*
+                 {
+                    "username": "KDidukh",
+                    "password": "1234567@Vv"
+                }
+            */
             if (!await this._authenticationManager.ValidateUser(userAuthDto))
             {
                 this._loggerManager.LogWarn($"{nameof(Authenticate)}: Authentication failed. Wrong username or password.");

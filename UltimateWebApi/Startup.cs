@@ -111,6 +111,7 @@ namespace UltimateWebApi
                 c.SwaggerDoc("v2", new OpenApiInfo {Title = "UltimateWebApi", Version = "v2"});
                 
                 // With main properties modified and this three below lines of code we implemented more description for any action which have triple slash comment
+                // Main project => properties => add 1591 suppress warning and generate the xml file in build section.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);

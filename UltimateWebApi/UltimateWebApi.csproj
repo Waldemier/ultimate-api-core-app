@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\net5.0\UltimateWebApi.xml</DocumentationFile>
+      <DocumentationFile>UltimateWebApi.xml</DocumentationFile>
       <NoWarn>1701;1702;1591</NoWarn>
     </PropertyGroup>
 
@@ -41,4 +41,13 @@
       <Folder Include="ModelBinders\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <DocFileItem Remove="~\user\Desktop\VS\UltimateWebApiBook\UltimateWebApi\UltimateWebApi\UltimateWebApi.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="UltimateWebApi.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>

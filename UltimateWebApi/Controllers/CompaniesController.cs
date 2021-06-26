@@ -146,7 +146,7 @@ namespace UltimateWebApi.Controllers
         /// <response code="400">If the item is null</response>
         /// <response code="422">If the model is invalid</response>
         [HttpPost(Name = "CreateCompany")]
-        [ProducesResponseType(201)]
+        [ProducesResponseType(typeof(CompanyDto), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
         [ServiceFilter(typeof(ValidationFilterAttribute))]

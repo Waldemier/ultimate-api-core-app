@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UltimateWebApi</name>
+    </assembly>
+    <members>
+        <member name="T:UltimateWebApi.ActionFilters.ValidationFilterAttribute">
+            <summary>
+            This class are implementing the actions argument filtering.
+            He checks if the action argument model is not null and all model property are valid.
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Controllers.CompaniesController.GetCompanies">
+            <summary>
+            Gets the list of all companies
+            </summary>
+            <returns>The companies list</returns>
+        </member>
+        <member name="M:UltimateWebApi.Controllers.CompaniesController.CreateCompany(Entities.DataTransferObjects.CompanyForCreateDto)">
+            <summary>
+            Creates a newly created company
+            </summary>
+            <param name="companyForCreateDto"></param>
+            <returns>A newly created company</returns>
+            <response code="201">Returns the newly created item</response>
+            <response code="400">If the item is null</response>
+            <response code="422">If the model is invalid</response>
+        </member>
+        <member name="T:UltimateWebApi.Controllers.CompaniesV2Controller">
+            <summary>
+            Can call by query string: https://localhost:5001/api/companies?api-version=2.0
+            Can call by route url: https://localhost:5001/api/2.0/companies
+            Can call by HTTP Header (but before that we need configure that in startup)
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Csv.CsvOutputFormatter.#ctor">
+            <summary>
+                In the constructor, we define which media type this formatter should parse as well as encodings.
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Csv.CsvOutputFormatter.CanWriteType(System.Type)">
+            <summary>
+                The CanWriteType method is overridden, and it indicates whether or not the CompanyDto type can be written by this serializer.
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Csv.CsvOutputFormatter.WriteResponseBodyAsync(Microsoft.AspNetCore.Mvc.Formatters.OutputFormatterWriteContext,System.Text.Encoding)">
+            <summary>
+                The WriteResponseBodyAsync method constructs the response.
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Csv.CsvOutputFormatter.FormatCsv(System.Text.StringBuilder,Entities.DataTransferObjects.CompanyDto)">
+            <summary>
+                Formats a response the way we want it.
+            </summary>
+        </member>
+        <member name="T:UltimateWebApi.Extensions.ExceptionMiddlewareExtensions">
+            <summary>
+            This class improves handling throw exceptions.
+            We may not use the try-catch block in our code.
+            </summary>
+        </member>
+        <member name="M:UltimateWebApi.Utility.EmployeeLinks.TryGenerateLinks(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.EmployeeDto},System.String,System.Guid,Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Main method, that returns either Shaped data with links or without links.
+            </summary>
+            <param name="employeesDto"></param>
+            <param name="fields"></param>
+            <param name="companyId"></param>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UltimateWebApi.Utility.EmployeeLinks.ShapeData(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.EmployeeDto},System.String)">
+            <summary>
+            Returns specify objects with only specify fields (props), which are specified in fields attribute.
+            </summary>
+            <param name="employeesDto"></param>
+            <param name="fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UltimateWebApi.Utility.EmployeeLinks.ShouldGenerateLinks(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Checks if context have Media type item, if it is not then returns false.
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UltimateWebApi.Utility.EmployeeLinks.ReturnShapedEmployees(System.Collections.Generic.List{System.Dynamic.ExpandoObject})">
+            <summary>
+            Returns just Shaped Entities without links.
+            </summary>
+            <param name="shapedEmployees"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UltimateWebApi.Utility.EmployeeLinks.ReturnLinkedEmployees(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.EmployeeDto},System.String,System.Guid,Microsoft.AspNetCore.Http.HttpContext,System.Collections.Generic.List{System.Dynamic.ExpandoObject})">
+            <summary>
+            Method which returns Shaped entities within links.
+            </summary>
+            <param name="employeesDto"></param>
+            <param name="fields"></param>
+            <param name="companyId"></param>
+            <param name="httpContext"></param>
+            <param name="shapedEmployees"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
